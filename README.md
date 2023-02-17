@@ -1,3 +1,11 @@
+## Course Link
+
+https://egghead.io/courses/build-a-modern-user-interface-with-chakra-ui-fac68106
+
+## Figma
+
+https://www.figma.com/file/vOcnzw9yT05grSCD1ji7ax/egghead.io---Introduction-to-Chakra-UI?node-id=802%3A9205&t=L4y8BiVGYo0gePzS-0
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
