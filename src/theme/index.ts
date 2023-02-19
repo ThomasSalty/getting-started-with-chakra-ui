@@ -1,8 +1,35 @@
-import { extendTheme, theme as base, type ThemeConfig, withDefaultColorScheme, withDefaultVariant } from "@chakra-ui/react";
+import { extendTheme, theme as base, type ThemeConfig, ComponentStyleConfig, withDefaultColorScheme, withDefaultVariant } from "@chakra-ui/react";
+
+const inputSelectStyles: ComponentStyleConfig = {
+  // overriding the "Input" and "Select" components' default style.
+  variants: {
+    filled: {
+      // we set the default variant to "filled" below for Inputs.
+      field: {
+        _focus: {
+          borderColor: "brand.500",
+        },
+      },
+    },
+  },
+  sizes: {
+    // the border radius is different for each size.
+    md: {
+      field: {
+        /* an Input has 3 parts: Addon, Field and Element:
+        https://chakra-ui.com/docs/components/input/theming */
+        /* a Select has 2 parts: Field and Icon:
+				https://chakra-ui.com/docs/components/select/theming */
+        borderRadius: "none",
+      },
+    },
+  },
+};
 
 type MyCustomConfig = {
   colors: { brand: Record<number, string> };
   fonts: Record<string, string>;
+  components: object;
 };
 
 const config: ThemeConfig & MyCustomConfig = {
@@ -27,6 +54,28 @@ const config: ThemeConfig & MyCustomConfig = {
     // body: "Inter",
     heading: `Montserrat, ${base.fonts.heading}`, // adding fallback.
     body: `Inter, ${base.fonts.body}`, // adding fallback.
+  },
+  components: {
+    Input: inputSelectStyles,
+    Select: inputSelectStyles,
+    Checkbox: {
+      baseStyle: {
+        control: {
+          /* a Checkbox has 4 parts: Control, Icon, Container and Label:
+					https://chakra-ui.com/docs/components/checkbox/theming */
+          borderRadius: "radii.none", // same as "none".
+          _focus: {
+            ring: 2,
+            ringColor: "base.500",
+          },
+        },
+      },
+    },
+    Button: {
+      baseStyle: {
+        borderRadius: 0, // same as "none".
+      },
+    },
   },
 };
 
