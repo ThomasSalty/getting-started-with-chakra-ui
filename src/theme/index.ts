@@ -1,4 +1,4 @@
-import { extendTheme, theme as base, type ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, theme as base, type ThemeConfig, withDefaultColorScheme, withDefaultVariant } from "@chakra-ui/react";
 
 type MyCustomConfig = {
   colors: { brand: Record<number, string> };
@@ -30,6 +30,16 @@ const config: ThemeConfig & MyCustomConfig = {
   },
 };
 
-const theme = extendTheme(config);
+const theme = extendTheme(
+  config,
+  withDefaultColorScheme({
+    colorScheme: "brand",
+    components: ["Checkbox"], // this is optional, if I skip it = all components.
+  }),
+  withDefaultVariant({
+    variant: "filled",
+    components: ["Input", "Select"],
+  })
+);
 
 export default theme;
